@@ -1,6 +1,6 @@
 def Censor(text, word):
     Text = text + " "
-    Word = word + " "
+    Word = (word + " ").lower()
     Trans = ""
     Censor = ""
 
@@ -14,7 +14,7 @@ def Censor(text, word):
         i1 = 0
 
         for o in range(i, len(Text)):
-            if (Text[o] == Word[i1]):
+            if (Text[o].lower() == Word[i1]):
 
                 i1 += 1
                 if (i1 == len(Word)):
@@ -26,7 +26,7 @@ def Censor(text, word):
             else:
                 out = 0
                 for o1 in range(o, len(Text)):
-                    if Text[o1] == " ":
+                    if Text[o1] == " " or Text[o1] == "\n":
                         i = o1 + 1
                         if (o1 == len(Text)-1):
                             Trans += Text[ini:i-1]
@@ -46,4 +46,4 @@ def Censor(text, word):
 
     return Trans
 
-print(Censor('heya he hey hey', 'hey'))
+print(Censor('heya he hey hey \nHey ', 'hEy'))
